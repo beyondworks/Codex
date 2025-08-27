@@ -30,6 +30,9 @@ interface TrendProductModalProps {
 }
 
 export function TrendProductModal({ isOpen, onClose, product, onPageChange }: TrendProductModalProps) {
+  // Early return before any Hook calls to comply with Rules of Hooks
+  if (!product) return null;
+
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [details, setDetails] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -96,8 +99,6 @@ export function TrendProductModal({ isOpen, onClose, product, onPageChange }: Tr
       .then(setDetails)
       .finally(() => setLoading(false));
   }, [isOpen, product?.videoId]);
-
-  if (!product) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>

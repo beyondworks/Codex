@@ -30,6 +30,9 @@ interface CategoryAnalysisModalProps {
 }
 
 export function CategoryAnalysisModal({ isOpen, onClose, category }: CategoryAnalysisModalProps) {
+  // Early return before any Hook calls to comply with Rules of Hooks
+  if (!category) return null;
+  
   // 카테고리별 상세 데이터 (실제로는 API에서 가져올 데이터)
   const getAnalysisData = (categoryName: string) => {
     const baseData = {
@@ -66,9 +69,7 @@ export function CategoryAnalysisModal({ isOpen, onClose, category }: CategoryAna
     return baseData;
   };
 
-  const analysisData = category ? getAnalysisData(category.name) : null;
-
-  if (!category || !analysisData) return null;
+  const analysisData = getAnalysisData(category.name);
 
   const formatNumber = (num: number, decimals: number = 1): string => {
     return Number(num.toFixed(decimals)).toString();

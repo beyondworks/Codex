@@ -53,6 +53,9 @@ interface VideoDetailModalProps {
 }
 
 export function VideoDetailModal({ isOpen, onClose, videoData }: VideoDetailModalProps) {
+  // Early return before any Hook calls to comply with Rules of Hooks
+  if (!videoData) return null;
+  
   const [activeTab, setActiveTab] = useState("performance");
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -89,8 +92,6 @@ export function VideoDetailModal({ isOpen, onClose, videoData }: VideoDetailModa
       setIsDownloading(false);
     }
   };
-
-  if (!videoData) return null;
 
   // 영상 상세 데이터 (실제로는 API에서 가져올 데이터)
   const detailData = {

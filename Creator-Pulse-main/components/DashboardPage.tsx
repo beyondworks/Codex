@@ -173,7 +173,7 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
 
   const recentVideos = [
     {
-      title: "겨울 필수템 TOP 10 🔥",
+      title: "Winter Essentials TOP 10",
       views: "125,892",
       revenue: "₩2,847,230",
       ctr: "8.4%",
@@ -181,7 +181,7 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
       status: "trending"
     },
     {
-      title: "신상 뷰티 아이템 리뷰",
+      title: "New Beauty Items Review",
       views: "89,456",
       revenue: "₩1,923,150",
       ctr: "6.2%",
@@ -189,7 +189,7 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
       status: "stable"
     },
     {
-      title: "홈트 필수 운동용품",
+      title: "Home Workout Essential Equipment",
       views: "156,234",
       revenue: "₩3,456,780",
       ctr: "9.1%",
@@ -197,7 +197,7 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
       status: "trending"
     },
     {
-      title: "가성비 갑! 생활용품",
+      title: "Best Value Household Items",
       views: "67,834",
       revenue: "₩987,650",
       ctr: "5.8%",
@@ -229,11 +229,11 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
         <div className="space-y-2">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <BarChart3 className="h-7 w-7 text-foreground" />
-              <h1 className="text-2xl md:text-3xl font-bold">대시보드</h1>
+              <BarChart3 className="h-7 w-7 text-apple-gray-700" />
+              <h1 className="text-apple-title-1 md:text-apple-large-title font-semibold text-apple-gray-900">Dashboard</h1>
             </div>
-            <p className="text-muted-foreground text-sm md:text-base">
-              실시간 성과 분석과 상세한 인사이트를 확인하세요
+            <p className="text-apple-body text-apple-gray-600">
+              Real-time performance analysis and detailed insights
             </p>
           </div>
         </div>
@@ -422,9 +422,9 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
         {/* Revenue Chart */}
         <Card className="lg:col-span-2 h-[400px] flex flex-col">
           <CardHeader className="flex-shrink-0">
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5 text-chart-1" />
-              월별 수익 추이
+            <CardTitle className="text-apple-headline font-semibold text-apple-gray-900 flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-brand-primary" />
+              Monthly Revenue Trends
             </CardTitle>
           </CardHeader>
           <CardContent className="flex-1 flex flex-col">
@@ -457,9 +457,9 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
         {/* Top Categories */}
         <Card className="h-[400px] flex flex-col">
           <CardHeader className="flex-shrink-0">
-            <CardTitle className="flex items-center gap-2">
-              <Target className="h-5 w-5 text-chart-2" />
-              인기 카테고리
+            <CardTitle className="text-apple-headline font-semibold text-apple-gray-900 flex items-center gap-2">
+              <Target className="h-5 w-5 text-brand-secondary" />
+              Popular Categories
             </CardTitle>
           </CardHeader>
           <CardContent className="flex-1">
@@ -485,9 +485,9 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
       {/* Recent Videos Performance */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5 text-chart-3" />
-            최근 영상 성과
+          <CardTitle className="text-apple-headline font-semibold text-apple-gray-900 flex items-center gap-2">
+            <Activity className="h-5 w-5 text-brand-primary" />
+            Recent Video Performance
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -542,30 +542,30 @@ export function DashboardPage({ filters, onFiltersChange }: DashboardPageProps) 
       {/* AI Insights Section */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Activity className="h-5 w-5 text-[#ff4d6d]" />
-            AI 추천 인사이트
-            <Badge className="bg-brand-gradient text-white">NEW</Badge>
+          <CardTitle className="text-apple-headline font-semibold text-apple-gray-900 flex items-center gap-2">
+            <Activity className="h-5 w-5 text-brand-primary" />
+            AI Insights
+            <Badge className="bg-brand-gradient text-white text-apple-caption font-medium">NEW</Badge>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 bg-blue-50 rounded-lg">
-              <h4 className="font-medium text-blue-800 mb-2">📈 업로드 최적화</h4>
-              <p className="text-sm text-blue-700">
-                화요일 오후 7시 업로드 시 평균 조회수 23% 증가
+              <h4 className="text-apple-callout font-semibold text-apple-gray-800 mb-2">Upload Optimization</h4>
+              <p className="text-apple-footnote text-apple-gray-700">
+                Tuesday 7PM uploads show 23% higher average views
               </p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
-              <h4 className="font-medium text-green-800 mb-2">🎯 타겟 추천</h4>
-              <p className="text-sm text-green-700">
-                25-34세 여성층에게 뷰티 제품 집중 마케팅 권장
+              <h4 className="text-apple-callout font-semibold text-apple-gray-800 mb-2">Target Recommendations</h4>
+              <p className="text-apple-footnote text-apple-gray-700">
+                Focus beauty product marketing on 25-34 female demographics
               </p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
-              <h4 className="font-medium text-purple-800 mb-2">💡 콘텐츠 제안</h4>
-              <p className="text-sm text-purple-700">
-                "겨울 스킨케어" 키워드 콘텐츠 수요 300% 급증 중
+              <h4 className="text-apple-callout font-semibold text-apple-gray-800 mb-2">Content Suggestions</h4>
+              <p className="text-apple-footnote text-apple-gray-700">
+                Winter skincare keyword content demand surged 300%
               </p>
             </div>
           </div>

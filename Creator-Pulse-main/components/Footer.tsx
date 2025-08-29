@@ -110,7 +110,7 @@ export function Footer({ onPageChange }: FooterProps) {
                 <li key={index}>
                   <Button
                     variant="link"
-                    className="h-auto p-0 text-sm text-muted-foreground hover:text-gray-900"
+                    className="h-auto p-0 text-apple-footnote text-apple-gray-600 hover:text-apple-gray-900 font-medium"
                     onClick={() => onPageChange?.(link.href)}
                   >
                     {link.label}
@@ -128,7 +128,7 @@ export function Footer({ onPageChange }: FooterProps) {
                 <li key={index}>
                   <Button
                     variant="link"
-                    className="h-auto p-0 text-sm text-muted-foreground hover:text-gray-900"
+                    className="h-auto p-0 text-apple-footnote text-apple-gray-600 hover:text-apple-gray-900 font-medium"
                   >
                     {link.label}
                   </Button>
@@ -145,7 +145,7 @@ export function Footer({ onPageChange }: FooterProps) {
                 <li key={index}>
                   <Button
                     variant="link"
-                    className="h-auto p-0 text-sm text-muted-foreground hover:text-gray-900"
+                    className="h-auto p-0 text-apple-footnote text-apple-gray-600 hover:text-apple-gray-900 font-medium"
                   >
                     {link.label}
                   </Button>
@@ -162,7 +162,7 @@ export function Footer({ onPageChange }: FooterProps) {
                 <li key={index}>
                   <Button
                     variant="link"
-                    className="h-auto p-0 text-sm text-muted-foreground hover:text-gray-900"
+                    className="h-auto p-0 text-apple-footnote text-apple-gray-600 hover:text-apple-gray-900 font-medium"
                   >
                     {link.label}
                   </Button>

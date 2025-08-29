@@ -102,17 +102,17 @@ export function Header({
             
             {/* 브랜드명과 슬로건 */}
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-brand-gradient bg-gradient-to-r from-[#ff4d6d] to-[#ff8a3d] bg-clip-text text-transparent">
+              <h1 className="text-apple-headline font-semibold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
                 Creator-Pulse
               </h1>
-              <p className="text-xs text-muted-foreground -mt-1 font-medium">
+              <p className="text-apple-caption text-apple-gray-600 -mt-1 font-medium">
                 YouTube Shopping Analytics
               </p>
             </div>
             
             {/* 모바일에서는 브랜드명만 표시 */}
             <div className="block sm:hidden">
-              <h1 className="text-lg font-bold text-brand-gradient bg-gradient-to-r from-[#ff4d6d] to-[#ff8a3d] bg-clip-text text-transparent">
+              <h1 className="text-apple-callout font-semibold bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
                 Creator-Pulse
               </h1>
             </div>
@@ -125,8 +125,8 @@ export function Header({
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="상품, 트렌드, 키워드 검색..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff4d6d]/20 focus:border-[#ff4d6d] bg-gray-50/50 transition-colors"
+              placeholder="Search products, trends, keywords..."
+              className="w-full pl-10 pr-4 py-2 border border-apple-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary bg-apple-gray-50/50 transition-colors text-apple-body"
             />
           </div>
         </div>
@@ -138,7 +138,7 @@ export function Header({
             <div className="hidden md:flex items-center gap-4 mr-4">
               <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full border border-green-200">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-green-700 font-medium">실시간 업데이트</span>
+                <span className="text-apple-caption text-green-700 font-medium">Real-time Updates</span>
               </div>
               
               {/* 간단한 통계 표시 */}
@@ -189,32 +189,32 @@ export function Header({
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="flex items-center gap-2 hover:bg-gray-100"
               >
-                <div className="w-8 h-8 bg-gradient-to-r from-[#ff4d6d] to-[#ff8a3d] rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full flex items-center justify-center">
                   <User className="h-4 w-4 text-white" />
                 </div>
-                <span className="hidden md:block font-medium">크리에이터</span>
+                <span className="hidden md:block text-apple-footnote font-semibold text-apple-gray-900">Creator</span>
               </Button>
 
               {/* 사용자 드롭다운 메뉴 */}
               {showUserMenu && (
                 <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                  <div className="px-4 py-3 border-b border-gray-100">
-                    <p className="font-medium">크리에이터님</p>
-                    <p className="text-sm text-muted-foreground">creator@example.com</p>
+                  <div className="px-4 py-3 border-b border-apple-gray-100">
+                    <p className="text-apple-body font-semibold text-apple-gray-900">Creator</p>
+                    <p className="text-apple-footnote text-apple-gray-600">creator@example.com</p>
                   </div>
                   
                   <div className="py-2">
-                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-gray-50">
+                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-apple-gray-50 text-apple-footnote">
                       <User className="h-4 w-4 mr-3" />
-                      프로필 설정
+                      Profile Settings
                     </Button>
-                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-gray-50">
+                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-apple-gray-50 text-apple-footnote">
                       <Settings className="h-4 w-4 mr-3" />
-                      환경 설정
+                      Preferences
                     </Button>
-                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-gray-50">
+                    <Button variant="ghost" size="sm" className="w-full justify-start px-4 hover:bg-apple-gray-50 text-apple-footnote">
                       <MessageCircle className="h-4 w-4 mr-3" />
-                      고객 지원
+                      Support
                     </Button>
                   </div>
                   
@@ -222,11 +222,11 @@ export function Header({
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="w-full justify-start px-4 text-red-600 hover:text-red-700 hover:bg-red-50"
+                      className="w-full justify-start px-4 text-red-600 hover:text-red-700 hover:bg-red-50 text-apple-footnote"
                       onClick={onLogout}
                     >
                       <LogOut className="h-4 w-4 mr-3" />
-                      로그아웃
+                      Sign Out
                     </Button>
                   </div>
                 </div>
@@ -235,9 +235,9 @@ export function Header({
           ) : (
             <Button 
               onClick={onLogin}
-              className="bg-gradient-to-r from-[#ff4d6d] to-[#ff8a3d] hover:opacity-90 text-white font-medium"
+              className="bg-gradient-to-r from-brand-primary to-brand-secondary hover:opacity-90 text-white text-apple-footnote font-semibold rounded-xl"
             >
-              로그인
+              Sign In
             </Button>
           )}
         </div>
@@ -249,8 +249,8 @@ export function Header({
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
-            placeholder="상품, 트렌드, 키워드 검색..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff4d6d]/20 focus:border-[#ff4d6d] bg-gray-50/50 transition-colors"
+            placeholder="Search products, trends, keywords..."
+            className="w-full pl-10 pr-4 py-2 border border-apple-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary bg-apple-gray-50/50 transition-colors text-apple-body"
           />
         </div>
       </div>

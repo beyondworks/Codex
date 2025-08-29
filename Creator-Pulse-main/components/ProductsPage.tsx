@@ -62,29 +62,29 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
 
   // 필터 옵션 데이터
   const priceRangeOptions = [
-    { value: "all", label: "전체 가격대" },
-    { value: "low", label: "3만원 이하" },
-    { value: "mid", label: "3-10만원" },
-    { value: "high", label: "10만원 이상" }
+    { value: "all", label: "All Price Ranges" },
+    { value: "low", label: "Under $20" },
+    { value: "mid", label: "$20-$65" },
+    { value: "high", label: "Over $65" }
   ];
 
   const difficultyOptions = [
-    { value: "쉬움", label: "쉬움" },
-    { value: "보통", label: "보통" },
-    { value: "어려움", label: "어려움" }
+    { value: "Easy", label: "Easy" },
+    { value: "Medium", label: "Medium" },
+    { value: "Hard", label: "Hard" }
   ];
 
   const trendOptions = [
-    { value: "hot", label: "핫 트렌드" },
-    { value: "rising", label: "상승 중" },
-    { value: "stable", label: "안정" }
+    { value: "hot", label: "Hot Trend" },
+    { value: "rising", label: "Rising" },
+    { value: "stable", label: "Stable" }
   ];
 
   const commissionOptions = [
-    { value: "all", label: "전체 수수료" },
-    { value: "low", label: "15% 이하" },
+    { value: "all", label: "All Commissions" },
+    { value: "low", label: "Under 15%" },
     { value: "mid", label: "15-20%" },
-    { value: "high", label: "20% 이상" }
+    { value: "high", label: "Over 20%" }
   ];
 
   // 필터 업데이트 함수
@@ -133,30 +133,30 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
   };
 
   const categories = [
-    { id: "all", name: "전체", count: 1247 },
-    { id: "beauty", name: "뷰티/화장품", count: 342 },
-    { id: "fashion", name: "패션/의류", count: 289 },
-    { id: "lifestyle", name: "생활용품", count: 234 },
-    { id: "electronics", name: "전자기기", count: 198 },
-    { id: "health", name: "건강/운동", count: 156 },
-    { id: "food", name: "식품/건강식품", count: 128 }
+    { id: "all", name: "All", count: 1247 },
+    { id: "beauty", name: "Beauty & Cosmetics", count: 342 },
+    { id: "fashion", name: "Fashion & Apparel", count: 289 },
+    { id: "lifestyle", name: "Lifestyle Products", count: 234 },
+    { id: "electronics", name: "Electronics", count: 198 },
+    { id: "health", name: "Health & Fitness", count: 156 },
+    { id: "food", name: "Food & Supplements", count: 128 }
   ];
 
   const trendingProducts: Product[] = [
     {
       id: "1",
-      name: "겨울 필수 보습크림 세트",
-      category: "뷰티/화장품",
-      price: "₩45,000",
+      name: "Winter Essential Moisturizer Set",
+      category: "Beauty & Cosmetics",
+      price: "$30",
       commission: "15%",
       popularity: 95,
       growth: "+234%",
       rating: 4.8,
       reviews: 1247,
-      estimatedRevenue: "₩2,340,000",
-      difficulty: "쉬움",
+      estimatedRevenue: "$1,560",
+      difficulty: "Easy",
       trend: "hot",
-      tags: ["겨울템", "스킨케어", "세트상품"]
+      tags: ["Winter", "Skincare", "Bundle"]
     },
     {
       id: "2",
@@ -220,9 +220,9 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
     },
     {
       id: "6",
-      name: "콜라겐 뷰티 드링크",
-      category: "식품/건강식품",
-      price: "₹67,000",
+      name: "Collagen Beauty Drink",
+      category: "Food & Supplements",
+      price: "$45",
       commission: "25%",
       popularity: 79,
       growth: "+178%",
@@ -286,11 +286,11 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
         <div className="space-y-2">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
-              <Package className="h-7 w-7 text-foreground" />
-              <h1 className="text-2xl md:text-3xl font-bold">상품 탐색</h1>
+              <Package className="h-7 w-7 text-apple-gray-900" />
+              <h1 className="text-apple-title-1 md:text-apple-large-title font-semibold text-apple-gray-900">Product Discovery</h1>
             </div>
-            <p className="text-muted-foreground text-sm md:text-base">
-              AI가 추천하는 수익성 높은 트렌딩 상품을 발견하세요
+            <p className="text-apple-gray-600 text-apple-footnote md:text-apple-body">
+              Discover high-revenue trending products recommended by AI
             </p>
           </div>
         </div>
@@ -300,10 +300,10 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="상품, 카테고리 검색..."
+              placeholder="Search products, categories..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 h-12 text-base"
+              className="pl-10 h-12 text-apple-body bg-apple-gray-50 border-apple-gray-200 focus:border-brand-primary focus:ring-brand-primary/20 rounded-lg"
             />
           </div>
           <div className="flex gap-2">
@@ -311,7 +311,7 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className="flex-1 relative">
                   <Filter className="h-4 w-4 mr-2" />
-                  필터
+                  <span className="text-apple-body font-medium">Filters</span>
                   {getActiveFiltersCount() > 0 && (
                     <Badge className="ml-2 bg-brand-gradient text-white text-xs h-5 w-5 rounded-full p-0 flex items-center justify-center">
                       {getActiveFiltersCount()}
@@ -319,8 +319,8 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                   )}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64" onCloseAutoFocus={(e) => e.preventDefault()}>
-                <DropdownMenuLabel>가격대</DropdownMenuLabel>
+              <DropdownMenuContent align="start" className="w-64 rounded-xl shadow-apple-lg border-apple-gray-200" onCloseAutoFocus={(e) => e.preventDefault()}>
+                <DropdownMenuLabel className="text-apple-callout font-semibold text-apple-gray-900">Price Range</DropdownMenuLabel>
                 {priceRangeOptions.map((option) => (
                   <DropdownMenuItem 
                     key={option.value} 
@@ -334,7 +334,7 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                 
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuLabel>수수료율</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-apple-callout font-semibold text-apple-gray-900">Commission Rate</DropdownMenuLabel>
                 {commissionOptions.map((option) => (
                   <DropdownMenuItem 
                     key={option.value} 
@@ -348,8 +348,8 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                 
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuLabel className="flex items-center justify-between">
-                  제작 난이도
+                <DropdownMenuLabel className="flex items-center justify-between text-apple-callout font-semibold text-apple-gray-900">
+                  Creation Difficulty
                   <Button
                     variant="ghost"
                     size="sm"
@@ -358,9 +358,9 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                       e.stopPropagation();
                       toggleAllDifficulty();
                     }}
-                    className="h-auto p-1 text-xs text-brand-primary hover:text-brand-primary"
+                    className="h-auto p-1 text-apple-caption text-brand-primary hover:text-brand-primary font-medium"
                   >
-                    {selectedDifficulty.length === difficultyOptions.length ? "전체 해제" : "전체 선택"}
+                    {selectedDifficulty.length === difficultyOptions.length ? "Deselect All" : "Select All"}
                   </Button>
                 </DropdownMenuLabel>
                 {difficultyOptions.map((difficulty) => (
@@ -376,8 +376,8 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                 
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuLabel className="flex items-center justify-between">
-                  트렌드 상태
+                <DropdownMenuLabel className="flex items-center justify-between text-apple-callout font-semibold text-apple-gray-900">
+                  Trend Status
                   <Button
                     variant="ghost"
                     size="sm"
@@ -386,9 +386,9 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                       e.stopPropagation();
                       toggleAllTrends();
                     }}
-                    className="h-auto p-1 text-xs text-brand-primary hover:text-brand-primary"
+                    className="h-auto p-1 text-apple-caption text-brand-primary hover:text-brand-primary font-medium"
                   >
-                    {selectedTrends.length === trendOptions.length ? "전체 해제" : "전체 선택"}
+                    {selectedTrends.length === trendOptions.length ? "Deselect All" : "Select All"}
                   </Button>
                 </DropdownMenuLabel>
                 {trendOptions.map((trend) => (
@@ -414,9 +414,9 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
                       hasUserInteracted: false
                     });
                   }}
-                  className="text-muted-foreground"
+                  className="text-apple-gray-600 text-apple-footnote"
                 >
-                  필터 초기화
+                  Reset Filters
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -426,7 +426,7 @@ export function ProductsPage({ filters, onFiltersChange, onPageChange }: Product
               onClick={() => onPageChange?.("workflow")}
             >
               <Plus className="h-4 w-4 mr-2" />
-              상품 등록
+              <span className="text-apple-body font-medium">Add Product</span>
             </Button>
           </div>
         </div>

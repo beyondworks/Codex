@@ -52,7 +52,7 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
       textColor: "text-white"
     },
     { 
-      name: "카카오톡", 
+      name: "KakaoTalk", 
       icon: MessageCircle, 
       color: "bg-yellow-400 hover:bg-yellow-500", 
       textColor: "text-black"
@@ -62,18 +62,18 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
   const features = [
     {
       icon: TrendingUp,
-      title: "실시간 트렌드 분석",
-      description: "지금 가장 핫한 상품 정보를 실시간으로 확인하세요"
+      title: "Real-time Trend Analysis",
+      description: "Discover the hottest products and trending opportunities in real time"
     },
     {
       icon: Users,
-      title: "크리에이터 인사이트",
-      description: "성공한 크리에이터들의 전략을 분석해보세요"
+      title: "Creator Insights",
+      description: "Analyze strategies from successful creators and industry leaders"
     },
     {
       icon: BarChart3,
-      title: "AI 수익 예측",
-      description: "머신러닝으로 콘텐츠 수익을 미리 예측해보세요"
+      title: "AI Revenue Prediction",
+      description: "Predict content revenue using advanced machine learning algorithms"
     }
   ];
 
@@ -89,7 +89,7 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
       setIsLoading(false);
       return;
     }
-    toast.success("로그인 되었습니다");
+    toast.success("Successfully logged in");
     setIsLoading(false);
     onLogin();
   };
@@ -98,65 +98,64 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
     setIsLoading(true);
     const prov = provider.toLowerCase().includes("instagram") ? "google" :
                  provider.toLowerCase().includes("youtube") ? "google" :
-                 provider.toLowerCase().includes("카카오") ? "kakao" : "google";
+                 provider.toLowerCase().includes("kakaotalk") ? "kakao" : "google";
     const { data, error } = await supabase.auth.signInWithOAuth({ provider: prov as any });
     if (error) toast.error(error.message);
     setIsLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-apple-gray-50 via-white to-apple-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         
-        {/* 왼쪽 - 브랜드 소개 */}
+        {/* Left - Brand Introduction */}
         <div className="flex flex-col justify-center space-y-8">
-          {/* 뒤로가기 버튼 */}
+          {/* Back Button */}
           {onBack && (
             <Button 
               variant="ghost" 
               onClick={onBack}
-              className="self-start p-2 hover:bg-gray-100"
+              className="self-start p-2 hover:bg-apple-gray-100 rounded-lg transition-colors duration-200"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              홈으로 돌아가기
+              Back to Home
             </Button>
           )}
 
-          {/* 브랜드 헤더 */}
+          {/* Brand Header */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-brand-gradient rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-brand-gradient rounded-2xl flex items-center justify-center shadow-apple-lg">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-brand-gradient">Creator-Pulse</h1>
-                <p className="text-muted-foreground">쇼핑 콘텐츠 분석의 혁신</p>
+                <h1 className="text-apple-large-title font-semibold text-brand-gradient">Creator-Pulse</h1>
+                <p className="text-apple-body text-apple-gray-600">Innovation in Shopping Content Analysis</p>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl lg:text-3xl font-bold leading-tight">
-                데이터 기반의<br />
-                <span className="text-brand-gradient">스마트한 콘텐츠 전략</span>을<br />
-                시작해보세요
+              <h2 className="text-apple-title-1 lg:text-apple-large-title font-semibold leading-tight text-apple-gray-900">
+                Start Your<br />
+                <span className="text-brand-gradient">Smart Content Strategy</span><br />
+                with Data-Driven Insights
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                2,500명 이상의 성공한 크리에이터들이 Creator-Pulse와 함께 
-                월 평균 1,280만원의 수익을 만들어가고 있습니다.
+              <p className="text-apple-body text-apple-gray-600 leading-relaxed">
+                Over 2,500 successful creators are generating an average of $8,500 monthly revenue with Creator-Pulse.
               </p>
             </div>
           </div>
 
-          {/* 주요 기능 */}
+          {/* Key Features */}
           <div className="space-y-4">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-4 p-4 bg-white/70 rounded-xl border border-gray-200 hover:bg-white/90 transition-colors">
-                <div className="w-10 h-10 bg-brand-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+              <div key={index} className="flex items-start gap-4 p-4 bg-white/70 rounded-xl border border-apple-gray-200 hover:bg-white/90 transition-all duration-200 shadow-apple-xs hover:shadow-apple-sm">
+                <div className="w-10 h-10 bg-brand-gradient rounded-lg flex items-center justify-center flex-shrink-0 shadow-apple-sm">
                   <feature.icon className="h-5 w-5 text-white" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-semibold">{feature.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h4 className="text-apple-callout font-semibold text-apple-gray-900">{feature.title}</h4>
+                  <p className="text-apple-footnote text-apple-gray-600 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -164,41 +163,41 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
             ))}
           </div>
 
-          {/* 성과 통계 */}
-          <div className="bg-white/70 rounded-xl p-6 border border-gray-200">
-            <h4 className="font-semibold text-center mb-4">Creator-Pulse 성과</h4>
+          {/* Performance Stats */}
+          <div className="bg-white/70 rounded-xl p-6 border border-apple-gray-200 shadow-apple-sm">
+            <h4 className="text-apple-callout font-semibold text-center mb-4 text-apple-gray-900">Creator-Pulse Performance</h4>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-brand-gradient">50,000+</div>
-                <div className="text-sm text-muted-foreground">분석된 상품</div>
+                <div className="text-apple-title-2 font-bold text-brand-gradient">50,000+</div>
+                <div className="text-apple-footnote text-apple-gray-600">Products Analyzed</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-gradient">₩12.8M</div>
-                <div className="text-sm text-muted-foreground">월 평균 수익</div>
+                <div className="text-apple-title-2 font-bold text-brand-gradient">$8.5M</div>
+                <div className="text-apple-footnote text-apple-gray-600">Monthly Revenue</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-brand-gradient">2,500+</div>
-                <div className="text-sm text-muted-foreground">활성 크리에이터</div>
+                <div className="text-apple-title-2 font-bold text-brand-gradient">2,500+</div>
+                <div className="text-apple-footnote text-apple-gray-600">Active Creators</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 오른쪽 - 로그인 폼 */}
+        {/* Right - Login Form */}
         <div className="flex flex-col justify-center">
-          <Card className="w-full max-w-md mx-auto shadow-xl border-0 bg-white/90 backdrop-blur-sm">
+          <Card className="w-full max-w-md mx-auto shadow-apple-xl border-0 bg-white/95 backdrop-blur-sm rounded-2xl">
             <CardHeader className="text-center space-y-4 pb-6">
-              <CardTitle className="text-2xl">로그인</CardTitle>
-              <p className="text-muted-foreground">
-                Creator-Pulse에서 여러분만의 성공 스토리를 시작하세요
+              <CardTitle className="text-apple-title-1 font-semibold text-apple-gray-900">Sign In</CardTitle>
+              <p className="text-apple-body text-apple-gray-600">
+                Start your success story with Creator-Pulse
               </p>
             </CardHeader>
 
             <CardContent className="space-y-6">
-              {/* 소셜 로그인 */}
+              {/* Social Login */}
               <div className="space-y-4">
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-4">간편 로그인</p>
+                  <p className="text-apple-footnote text-apple-gray-600 mb-4">Quick Sign In</p>
                   <div className="grid grid-cols-3 gap-3">
                     {socialProviders.map((provider) => (
                       <Button
@@ -219,22 +218,22 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
                 <div className="absolute inset-0 flex items-center">
                   <Separator />
                 </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white px-2 text-muted-foreground">또는 이메일로 로그인</span>
+                <div className="relative flex justify-center text-apple-caption uppercase">
+                  <span className="bg-white px-2 text-apple-gray-500">Or sign in with email</span>
                 </div>
               </div>
 
-              {/* 이메일 로그인 폼 */}
+              {/* Email Login Form */}
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="email">이메일</Label>
+                  <Label htmlFor="email" className="text-apple-callout font-medium text-apple-gray-900">Email</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-apple-gray-500" />
                     <Input
                       id="email"
                       type="email"
-                      placeholder="이메일을 입력해주세요"
-                      className="pl-10 h-12 bg-gray-50 border-gray-200 focus:border-[#ff4d6d] focus:ring-[#ff4d6d]/20"
+                      placeholder="Enter your email address"
+                      className="pl-10 h-12 bg-apple-gray-50 border-apple-gray-200 focus:border-brand-primary focus:ring-brand-primary/20 rounded-lg text-apple-body"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -243,14 +242,14 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password">비밀번호</Label>
+                  <Label htmlFor="password" className="text-apple-callout font-medium text-apple-gray-900">Password</Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-apple-gray-500" />
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      placeholder="비밀번호를 입력해주세요"
-                      className="pl-10 pr-12 h-12 bg-gray-50 border-gray-200 focus:border-[#ff4d6d] focus:ring-[#ff4d6d]/20"
+                      placeholder="Enter your password"
+                      className="pl-10 pr-12 h-12 bg-apple-gray-50 border-apple-gray-200 focus:border-brand-primary focus:ring-brand-primary/20 rounded-lg text-apple-body"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       required
@@ -258,7 +257,7 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-apple-gray-500 hover:text-apple-gray-900 transition-colors duration-200"
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
@@ -272,58 +271,58 @@ export function LoginPage({ onBack, onLogin }: LoginPageProps) {
                       checked={formData.rememberMe}
                       onCheckedChange={(checked) => setFormData({ ...formData, rememberMe: checked as boolean })}
                     />
-                    <Label htmlFor="remember" className="text-sm">로그인 상태 유지</Label>
+                    <Label htmlFor="remember" className="text-apple-footnote text-apple-gray-700">Keep me signed in</Label>
                   </div>
-                  <Button variant="link" size="sm" className="px-0 text-[#ff4d6d] hover:text-[#ff4d6d]/80">
-                    비밀번호를 잊으셨나요?
+                  <Button variant="link" size="sm" className="px-0 text-brand-primary hover:text-brand-primary/80 text-apple-footnote">
+                    Forgot your password?
                   </Button>
                 </div>
 
                 <Button 
                   type="submit" 
-                  className="w-full h-12 bg-brand-gradient hover:opacity-90 text-white transition-all duration-200"
+                  className="w-full h-12 bg-brand-gradient hover:opacity-90 text-white transition-all duration-200 rounded-lg shadow-apple-sm hover:shadow-apple-md text-apple-callout font-medium"
                   disabled={isLoading}
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      로그인 중...
+                      <span className="text-apple-body">Signing in...</span>
                     </div>
                   ) : (
                     <>
                       <Zap className="h-4 w-4 mr-2" />
-                      로그인
+                      <span className="text-apple-callout font-medium">Sign In</span>
                     </>
                   )}
                 </Button>
               </form>
 
               <div className="text-center space-y-4">
-                <div className="bg-gradient-to-r from-[#ff4d6d]/5 to-[#ff8a3d]/5 rounded-lg p-4 border border-[#ff4d6d]/20">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#ff4d6d]" />
-                    <span className="text-sm font-medium">무료 체험 혜택</span>
+                <div className="bg-gradient-to-r from-brand-primary/5 to-brand-secondary/5 rounded-lg p-4 border border-brand-primary/20 shadow-apple-xs">
+                  <div className="flex items-center gap-2 mb-2 justify-center">
+                    <CheckCircle2 className="h-4 w-4 text-brand-primary" />
+                    <span className="text-apple-footnote font-medium text-apple-gray-900">Free Trial Benefits</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    첫 가입 시 프리미엄 기능을 7일간 무료로 체험할 수 있습니다
+                  <p className="text-apple-caption text-apple-gray-600">
+                    Experience premium features free for 7 days when you first sign up
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    아직 계정이 없으신가요?
+                  <p className="text-apple-footnote text-apple-gray-600">
+                    Don't have an account yet?
                   </p>
-                  <Button variant="outline" size="sm" className="border-[#ff4d6d]/30 text-[#ff4d6d] hover:bg-[#ff4d6d]/5">
-                    무료로 시작하기
+                  <Button variant="outline" size="sm" className="border-brand-primary/30 text-brand-primary hover:bg-brand-primary/5 rounded-lg text-apple-footnote font-medium">
+                    Start Free Trial
                   </Button>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* 보안 안내 */}
-          <div className="mt-6 text-center text-xs text-muted-foreground max-w-md mx-auto">
-            <p>🔒 Creator-Pulse는 개인정보보호법에 따라 안전하게 데이터를 보호합니다</p>
+          {/* Security Notice */}
+          <div className="mt-6 text-center text-apple-caption text-apple-gray-500 max-w-md mx-auto">
+            <p>Creator-Pulse securely protects your data in compliance with privacy regulations</p>
           </div>
         </div>
       </div>

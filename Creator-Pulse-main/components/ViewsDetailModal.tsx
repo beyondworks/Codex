@@ -43,7 +43,7 @@ export function ViewsDetailModal({ isOpen, onClose }: ViewsDetailModalProps) {
 
   const handleDownload = async (format: 'pdf' | 'csv' | 'json') => {
     setIsDownloading(true);
-    toast.loading("조회수 리포트를 생성중입니다...", { id: "download" });
+    toast.loading("Generating views report...", { id: "download" });
     
     try {
       const reportData = generateViewsReportData();
@@ -66,7 +66,7 @@ export function ViewsDetailModal({ isOpen, onClose }: ViewsDetailModalProps) {
           break;
       }
       
-      toast.success("조회수 리포트 다운로드가 완료되었습니다!", { id: "download" });
+      toast.success("Views report download completed!", { id: "download" });
     } catch (error) {
       toast.error("리포트 다운로드 중 오류가 발생했습니다.", { id: "download" });
       console.error('Download error:', error);

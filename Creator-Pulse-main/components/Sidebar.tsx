@@ -200,20 +200,20 @@ export function Sidebar({
         </nav>
 
         {/* 하단 정보 */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-gray-50">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-apple-gray-50">
           <div className="text-center">
-            <div className="text-xs text-gray-500 mb-1">
-              실시간 업데이트
+            <div className="text-apple-caption text-apple-gray-600 mb-1">
+              Real-time Updates
             </div>
             <div className="flex items-center justify-center space-x-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-xs text-green-600">연결됨</span>
+              <span className="text-apple-caption text-green-600">Connected</span>
             </div>
           </div>
           
           {/* 버전 정보 */}
-          <div className="text-center mt-2 pt-2 border-t border-gray-200">
-            <p className="text-xs text-gray-400">Creator-Pulse v2.1.0</p>
+          <div className="text-center mt-2 pt-2 border-t border-apple-gray-200">
+            <p className="text-apple-caption text-apple-gray-400">Creator-Pulse v2.1.0</p>
           </div>
         </div>
       </aside>

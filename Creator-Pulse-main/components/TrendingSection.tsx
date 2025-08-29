@@ -21,27 +21,104 @@ export function TrendingSection({ onPageChange }: TrendingSectionProps) {
   useEffect(() => {
     const fetchTrends = async () => {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('trend_items')
-        .select('*')
-        .order('updated_at', { ascending: false })
-        .limit(60);
-      if (!error && data) {
-        setItems(data.map(d => ({
-          title: d.title,
-          category: d.category_name || d.category,
-          growth: Number(d.growth ?? 0),
-          views: Number(d.views ?? 0),
-          revenue: Number(d.revenue ?? 0),
-          trend: d.trend,
-          videoId: d.video_id,
-          thumbnail: d.thumbnail_url,
-          channel: d.channel_title,
-        })));
+      try {
+        const { data, error } = await supabase
+          .from('trend_items')
+          .select('*')
+          .order('updated_at', { ascending: false })
+          .limit(60);
+        
+        if (error) {
+          console.error('Supabase error:', error);
+          setLoading(false);
+          return;
+        }
+        
+        if (data && data.length > 0) {
+          setItems(data.map(d => ({
+            title: d.title,
+            category: d.category_name || d.category,
+            growth: Number(d.growth ?? 0),
+            views: Number(d.views ?? 0),
+            revenue: Number(d.revenue ?? 0),
+            trend: d.trend,
+            videoId: d.video_id,
+            thumbnail: d.thumbnail_url,
+            channel: d.channel_title,
+          })));
+        } else {
+          console.log('No trend data found, using fallback data');
+          // Fallback data for demo purposes
+          setItems([
+            {
+              title: "Gaming Mouse Review 2024",
+              category: "Electronics",
+              growth: 32.5,
+              views: 125892,
+              revenue: 2847.23,
+              trend: "up",
+              videoId: "demo1",
+              thumbnail: null,
+              channel: "Tech Reviews"
+            },
+            {
+              title: "Winter Skincare Routine",
+              category: "Beauty",
+              growth: 28.7,
+              views: 89456,
+              revenue: 1923.15,
+              trend: "up",
+              videoId: "demo2",
+              thumbnail: null,
+              channel: "Beauty Guide"
+            },
+            {
+              title: "Home Workout Equipment",
+              category: "Fitness",
+              growth: 45.2,
+              views: 156234,
+              revenue: 3456.78,
+              trend: "up",
+              videoId: "demo3",
+              thumbnail: null,
+              channel: "Fitness Pro"
+            }
+          ]);
+        }
+      } catch (err) {
+        console.error('Failed to fetch trends:', err);
+        // Use fallback data on error
+        setItems([]);
       }
       setLoading(false);
     };
+
+    // Set up real-time subscription
+    const setupRealTimeSubscription = () => {
+      const subscription = supabase
+        .channel('trend_items_changes')
+        .on('postgres_changes', 
+          { 
+            event: '*', 
+            schema: 'public', 
+            table: 'trend_items' 
+          }, 
+          (payload) => {
+            console.log('Real-time update:', payload);
+            fetchTrends(); // Refetch data when changes occur
+          }
+        )
+        .subscribe();
+
+      return subscription;
+    };
+
     fetchTrends();
+    const subscription = setupRealTimeSubscription();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const totalPages = Math.max(1, Math.ceil((items?.length || 0) / itemsPerPage));

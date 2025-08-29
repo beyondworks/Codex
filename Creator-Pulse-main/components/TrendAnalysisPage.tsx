@@ -374,19 +374,19 @@ export function TrendAnalysisPage({ onPageChange, onContentAnalysis }: TrendAnal
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
                 <TrendingUp className="h-7 w-7 text-foreground" />
-                <h1 className="text-lg md:text-2xl lg:text-3xl font-bold">
-                  트렌드 분석
+                <h1 className="text-apple-title-2 md:text-apple-title-1 lg:text-apple-large-title font-semibold text-apple-gray-900">
+                  Trend Analysis
                 </h1>
               </div>
-              <p className="text-muted-foreground text-xs md:text-sm lg:text-base">
-                실시간 상품 트렌드와 시장 분석으로 최적의 콘텐츠 기회를 발견하세요
+              <p className="text-apple-gray-600 text-apple-footnote md:text-apple-body lg:text-apple-callout">
+                Discover optimal content opportunities with real-time product trends and market analysis
               </p>
             </div>
             
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 px-2 md:px-3 py-1 md:py-2 bg-green-50 rounded-lg">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-green-700">실시간</span>
+                <span className="text-apple-caption text-green-700 font-medium">Live</span>
               </div>
               <Button variant="outline" size="sm" className="px-2 md:px-3 text-xs md:text-sm">
                 <RefreshCw className="h-3 w-3 md:h-4 md:w-4" />
@@ -400,10 +400,10 @@ export function TrendAnalysisPage({ onPageChange, onContentAnalysis }: TrendAnal
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="상품명 또는 카테고리 검색..."
+                placeholder="Search products or categories..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 text-sm h-9 md:h-10"
+                className="pl-10 text-apple-body h-9 md:h-10 bg-apple-gray-50 border-apple-gray-200 focus:border-brand-primary focus:ring-brand-primary/20 rounded-lg"
               />
             </div>
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
@@ -413,11 +413,11 @@ export function TrendAnalysisPage({ onPageChange, onContentAnalysis }: TrendAnal
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={`whitespace-nowrap text-xs flex-shrink-0 h-7 md:h-8 px-2 md:px-3 ${
-                    selectedCategory === category ? "bg-[#ff4d6d] text-white border-[#ff4d6d] hover:bg-[#ff4d6d]/90" : "hover:bg-accent"
+                  className={`whitespace-nowrap text-apple-caption flex-shrink-0 h-7 md:h-8 px-2 md:px-3 rounded-lg font-medium transition-all duration-200 ${
+                    selectedCategory === category ? "bg-brand-primary text-white border-brand-primary hover:bg-brand-primary/90 shadow-apple-sm" : "hover:bg-apple-gray-100 text-apple-gray-700"
                   }`}
                 >
-                  {category === "all" ? "전체" : category}
+                  {category === "all" ? "All" : category}
                 </Button>
               ))}
             </div>
@@ -430,9 +430,9 @@ export function TrendAnalysisPage({ onPageChange, onContentAnalysis }: TrendAnal
             <CardContent className="p-2 md:p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-muted-foreground">급상승 콘텐츠</p>
-                  <p className="text-sm md:text-lg font-bold">89개</p>
-                  <p className="text-xs text-green-600">+31.2%</p>
+                  <p className="text-apple-caption text-apple-gray-600">Trending Content</p>
+                  <p className="text-apple-footnote md:text-apple-title-3 font-semibold text-apple-gray-900">89</p>
+                  <p className="text-apple-caption text-green-600 font-medium">+31.2%</p>
                 </div>
                 <div className="p-1 md:p-2 bg-red-50 rounded-lg">
                   <Video className="h-3 w-3 md:h-4 md:w-4 text-red-500" />
@@ -571,8 +571,8 @@ export function TrendAnalysisPage({ onPageChange, onContentAnalysis }: TrendAnal
                         </div>
                         
                         <div className="absolute top-2 left-2">
-                          <Badge className="bg-green-500 text-white text-xs border-0">
-                            급상승
+                          <Badge className="bg-green-500 text-white text-apple-caption border-0 font-medium shadow-apple-sm">
+                            Trending
                           </Badge>
                         </div>
                       </div>

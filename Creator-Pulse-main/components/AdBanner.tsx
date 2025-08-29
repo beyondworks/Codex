@@ -12,8 +12,8 @@ export function AdBanner() {
       <CardContent className="relative p-4">
         {/* 상단 - 프로모션 태그 */}
         <div className="flex items-center justify-between mb-3">
-          <Badge className="bg-brand-gradient text-white border-0 text-xs px-2 py-1">
-            💎 PREMIUM
+          <Badge className="bg-brand-gradient text-white border-0 text-apple-caption px-2 py-1 font-medium shadow-apple-sm">
+            PREMIUM
           </Badge>
           <Sparkles className="h-4 w-4 text-[#ff8a3d] animate-pulse" />
         </div>
@@ -21,39 +21,39 @@ export function AdBanner() {
         {/* 메인 콘텐츠 */}
         <div className="space-y-2">
           <div className="space-y-1">
-            <h3 className="font-semibold text-base leading-tight">
-              AI 수익 최적화
+            <h3 className="font-semibold text-apple-callout leading-tight text-apple-gray-900">
+              AI Revenue Optimization
             </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              머신러닝 기반 개인 맞춤 전략으로 수익을 3배 늘려보세요
+            <p className="text-apple-caption text-apple-gray-600 leading-relaxed">
+              Triple your revenue with machine learning-powered personalized strategies
             </p>
           </div>
 
           {/* 특징 리스트 */}
-          <ul className="space-y-0.5 text-xs text-muted-foreground">
+          <ul className="space-y-0.5 text-apple-caption text-apple-gray-600">
             <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-[#ff8a3d] rounded-full"></div>
-              실시간 트렌드 알림
+              <div className="w-1 h-1 bg-brand-secondary rounded-full"></div>
+              Real-time trend alerts
             </li>
             <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-[#ff8a3d] rounded-full"></div>
-              개인 맞춤 상품 추천
+              <div className="w-1 h-1 bg-brand-secondary rounded-full"></div>
+              Personalized product recommendations
             </li>
           </ul>
         </div>
 
         {/* 하단 - CTA */}
         <div className="space-y-2 mt-3">
-          <div className="flex items-center gap-2 text-xs">
-            <Zap className="h-3 w-3 text-[#ff8a3d]" />
-            <span className="text-muted-foreground">7일 무료 체험</span>
+          <div className="flex items-center gap-2 text-apple-caption">
+            <Zap className="h-3 w-3 text-brand-secondary" />
+            <span className="text-apple-gray-600 font-medium">7-day free trial</span>
           </div>
           
           <Button 
             size="sm" 
-            className="w-full bg-brand-gradient hover:opacity-90 transition-all duration-200 group-hover:scale-[1.02] text-xs h-7"
+            className="w-full bg-brand-gradient hover:opacity-90 transition-all duration-200 group-hover:scale-[1.02] text-apple-caption h-7 font-medium shadow-apple-sm hover:shadow-apple-md rounded-lg"
           >
-            무료로 시작하기
+            Start Free Trial
             <ArrowRight className="h-3 w-3 ml-1" />
           </Button>
         </div>

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "node",
+      "args": ["/Users/yoogeon/supabase-mcp/packages/mcp-server-supabase/dist/transports/stdio.js"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_1d09bc0e2b47fca5e9c4453d16c02f9d6c6705ee"
+      }
+    }
+  }
+}

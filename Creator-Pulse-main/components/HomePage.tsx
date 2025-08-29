@@ -13,7 +13,11 @@ import {
   Calendar,
   ArrowUpRight,
   Zap,
-  Activity
+  Activity,
+  Lightbulb,
+  DollarSign,
+  TrendingUp,
+  Users
 } from "lucide-react";
 
 interface HomePageProps {
@@ -96,15 +100,66 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
         </section>
       )}
 
-      {/* 2. 즉시 실행 가능한 액션 - 로그인 상태에서만 표시 */}
+      {/* 2. 오늘의 기회 - 메인 CTA */}
       {isLoggedIn && (
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-[#ff8a3d]" />
-            <h2 className="text-xl font-semibold">
-              지금 바로 할 수 있는 일
-            </h2>
+        <section className="space-y-6">
+          {/* 메인 CTA - 오늘의 기회 */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#ff8a3d]/10 via-[#ff4d6d]/10 to-[#ff8a3d]/10 border border-[#ff8a3d]/20 shadow-lg shadow-[#ff8a3d]/10">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ff8a3d]/5 via-transparent to-[#ff4d6d]/5"></div>
+            <div className="relative p-8">
+              <div className="flex items-center justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-2xl bg-gradient-to-r from-[#ff8a3d] to-[#ff4d6d] shadow-lg shadow-[#ff8a3d]/30">
+                      <Lightbulb className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold bg-gradient-to-r from-[#ff8a3d] to-[#ff4d6d] bg-clip-text text-transparent">
+                        💡 오늘의 기회
+                      </h2>
+                      <p className="text-muted-foreground">
+                        지금 촬영하면 가장 수익성 높은 콘텐츠
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      무선 이어폰 완벽 리뷰 & 언박싱
+                    </h3>
+                    <div className="flex items-center gap-6 text-sm">
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-green-700 font-medium">94.5% 신뢰도</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="h-4 w-4 text-[#ff8a3d]" />
+                        <span className="font-semibold text-[#ff8a3d]">예상 월수익: 85만원</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4 text-green-500" />
+                        <span className="text-green-600 font-medium">+32% 성장률</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <Button 
+                  className="bg-gradient-to-r from-[#ff8a3d] to-[#ff4d6d] hover:from-[#ff8a3d]/90 hover:to-[#ff4d6d]/90 text-white font-semibold px-8 py-6 rounded-2xl shadow-lg shadow-[#ff8a3d]/30 hover:shadow-xl hover:shadow-[#ff8a3d]/40 transition-all duration-300 hover:scale-105"
+                  size="lg"
+                >
+                  📹 지금 촬영하기
+                </Button>
+              </div>
+            </div>
           </div>
+
+          {/* 빠른 액션 */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-[#ff8a3d]" />
+              <h2 className="text-xl font-semibold">
+                빠른 액션
+              </h2>
+            </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {quickActions.map((action, index) => (
               <Card
@@ -136,52 +191,74 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
               </Card>
             ))}
           </div>
+          </div>
         </section>
       )}
 
-      {/* 3. 메인 콘텐츠 - 2:1 비율 2행 레이아웃 */}
-      <section className="space-y-6">
+      {/* 3. 핵심 3개 영역 */}
+      <section className="space-y-8">
         <div className="flex items-center gap-2">
           <Activity className="h-5 w-5 text-[#ff4d6d]" />
-          <h2 className="text-xl font-semibold">
-            실시간 마켓 인사이트
+          <h2 className="text-2xl font-bold">
+            핵심 인사이트
           </h2>
           <Badge className="bg-brand-gradient text-white border-0">
             LIVE
           </Badge>
         </div>
 
-        {/* 첫 번째 행 - 실시간 트렌드 + 인기 카테고리 + 광고 배너 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* 왼쪽 컬럼 - 실시간 트렌드 (8/12 = 2/3) */}
-          <div className="lg:col-span-8">
-            <TrendingSection onPageChange={onPageChange} />
+        {/* 영역 1: 지금 뜨는 것 */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-gradient-to-r from-[#ff4d6d]/10 to-[#ff8a3d]/10">
+              <TrendingUp className="h-5 w-5 text-[#ff4d6d]" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">🔥 지금 뜨는 것</h3>
+            <span className="text-sm text-muted-foreground">실시간 트렌드 & 인기 상품</span>
           </div>
-
-          {/* 오른쪽 컬럼 - 인기 카테고리 + 광고 배너 (4/12 = 1/3) */}
-          <div className="lg:col-span-4 space-y-6">
-            <PopularCategories />
-            <AdBanner />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-8">
+              <TrendingSection onPageChange={onPageChange} />
+            </div>
+            <div className="lg:col-span-4">
+              <PopularProducts onPageChange={onPageChange} />
+            </div>
           </div>
         </div>
 
-        {/* 두 번째 행 - 실시간 인기 상품 + 빠른 시작 가이드 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* 왼쪽 컬럼 - 실시간 인기 상품 (8/12 = 2/3) */}
-          <div className="lg:col-span-8">
-            <PopularProducts onPageChange={onPageChange} />
+        {/* 영역 2: 내게 맞는 것 */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-gradient-to-r from-[#ff8a3d]/10 to-[#ff4d6d]/10">
+              <Users className="h-5 w-5 text-[#ff8a3d]" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">🎯 내게 맞는 것</h3>
+            <span className="text-sm text-muted-foreground">개인화 추천 & 카테고리</span>
           </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-8">
+              <MarketInsights onPageChange={onPageChange} />
+            </div>
+            <div className="lg:col-span-4 space-y-6">
+              <PopularCategories />
+              <AdBanner />
+            </div>
+          </div>
+        </div>
 
-          {/* 오른쪽 컬럼 - 빠른 시작 가이드 (4/12 = 1/3) */}
-          <div className="lg:col-span-4">
+        {/* 영역 3: 성과 분석 */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-gradient-to-r from-green-500/10 to-blue-500/10">
+              <Activity className="h-5 w-5 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">📊 성과 분석</h3>
+            <span className="text-sm text-muted-foreground">가이드 & 팁</span>
+          </div>
+          <div className="lg:col-span-12">
             <QuickStartGuide onPageChange={onPageChange} />
           </div>
         </div>
-      </section>
-
-      {/* 4. 시장 분석 - 전체 너비 */}
-      <section className="space-y-4">
-        <MarketInsights onPageChange={onPageChange} />
       </section>
 
       {/* 개발용 로그인 토글 */}

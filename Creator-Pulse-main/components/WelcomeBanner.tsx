@@ -8,95 +8,77 @@ interface WelcomeBannerProps {
 
 export function WelcomeBanner({ onLoginClick }: WelcomeBannerProps) {
   return (
-    <Card className="relative overflow-hidden bg-brand-gradient p-4 md:p-8 text-white mb-6">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-black/10">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-4 left-4 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute top-12 left-16 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute top-8 left-32 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute top-16 left-48 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute top-20 left-12 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute top-32 left-28 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute top-24 left-64 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute top-4 right-8 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute top-16 right-24 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute top-28 right-12 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute bottom-8 left-8 w-1 h-1 bg-white/20 rounded-full"></div>
-          <div className="absolute bottom-16 left-40 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute bottom-12 right-16 w-1 h-1 bg-white/20 rounded-full"></div>
-        </div>
-      </div>
+    <Card className="relative overflow-hidden bg-gradient-to-br from-white via-apple-gray-50 to-apple-gray-100 border-0 shadow-apple-lg p-8 md:p-12 mb-6">
+      {/* Subtle background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-brand-secondary/5"></div>
       
       <div className="relative z-10">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <Zap className="h-5 w-5 md:h-6 md:w-6" />
-              <span className="text-sm font-medium opacity-90">Creator-Pulse와 함께</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-1 h-8 bg-gradient-to-b from-brand-primary to-brand-secondary rounded-full"></div>
+              <span className="text-apple-footnote font-medium text-apple-gray-600 tracking-wide">Creator-Pulse</span>
             </div>
             
-            <h1 className="text-2xl md:text-3xl font-bold mb-3">
-              <span className="block sm:inline">YouTube 쇼핑의</span>
-              <span className="block sm:inline"> 새로운 기준을 제시하세요</span>
+            <h1 className="text-apple-title-1 md:text-apple-large-title font-semibold mb-4 text-apple-gray-900 leading-tight">
+              <span className="block">Creator를 위한</span>
+              <span className="block bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                Premium Analytics
+              </span>
             </h1>
             
-            <p className="text-base md:text-lg opacity-90 mb-6 max-w-2xl leading-relaxed">
-              AI 기반 분석으로 트렌드를 앞서가고, 데이터 인사이트로 
-              수익을 극대화하세요. 성공하는 크리에이터들의 선택입니다.
+            <p className="text-apple-body md:text-apple-callout text-apple-gray-700 mb-8 max-w-2xl leading-relaxed">
+              데이터 기반 인사이트로 콘텐츠 전략을 최적화하고, 
+              정확한 트렌드 분석을 통해 수익성을 극대화하세요.
             </p>
             
-            <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2 sm:gap-3 md:gap-4 mb-6">
+            <div className="flex flex-wrap items-center gap-6 mb-8">
               <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4" />
-                <span className="text-sm">실시간 트렌드 분석</span>
+                <TrendingUp className="h-4 w-4 text-brand-primary" />
+                <span className="text-apple-footnote font-medium text-apple-gray-700">Real-time Analytics</span>
               </div>
               <div className="flex items-center gap-2">
-                <Target className="h-4 w-4" />
-                <span className="text-sm">수익 예측</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4" />
-                <span className="text-sm">인사이트</span>
+                <Target className="h-4 w-4 text-brand-secondary" />
+                <span className="text-apple-footnote font-medium text-apple-gray-700">Revenue Insights</span>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="flex items-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-gray-900 hover:bg-gray-100 font-medium"
+                className="bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:shadow-apple-lg transition-all duration-300 hover:scale-[1.02] font-medium px-8 py-3 rounded-2xl shadow-apple-md border-0"
                 onClick={onLoginClick}
               >
-                무료로 시작하기
+                Get Started
               </Button>
               <Button 
-                variant="outline" 
+                variant="ghost" 
                 size="lg" 
-                className="border-white/50 text-white bg-transparent hover:bg-white/20 hover:border-white hover:text-white"
+                className="text-apple-gray-600 hover:text-apple-gray-900 hover:bg-transparent font-medium"
               >
                 <Play className="h-4 w-4 mr-2" />
-                데모 보기
+                Watch Demo
               </Button>
             </div>
           </div>
           
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-                  <TrendingUp className="h-10 w-10 text-[#ff4d6d]" />
+              <div className="w-40 h-40 bg-gradient-to-br from-white to-apple-gray-50 rounded-3xl flex items-center justify-center shadow-apple-lg border border-apple-gray-200/50">
+                <div className="w-24 h-24 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center shadow-apple-md">
+                  <TrendingUp className="h-12 w-12 text-white" />
                 </div>
               </div>
               
-              {/* Floating Stats */}
-              <div className="absolute -top-4 -right-4 bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
-                <div className="text-2xl font-bold">2.5M+</div>
-                <div className="text-xs opacity-80">총 조회수</div>
+              {/* Refined Stats */}
+              <div className="absolute -top-3 -right-3 bg-white/95 backdrop-blur-md rounded-2xl p-4 text-center shadow-apple-lg border border-apple-gray-200/30">
+                <div className="text-apple-title-3 font-semibold text-apple-gray-900">2.5M+</div>
+                <div className="text-apple-caption text-apple-gray-600">Total Views</div>
               </div>
               
-              <div className="absolute -bottom-4 -left-4 bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
-                <div className="text-2xl font-bold">95%</div>
-                <div className="text-xs opacity-80">만족도</div>
+              <div className="absolute -bottom-3 -left-3 bg-white/95 backdrop-blur-md rounded-2xl p-4 text-center shadow-apple-lg border border-apple-gray-200/30">
+                <div className="text-apple-title-3 font-semibold text-apple-gray-900">95%</div>
+                <div className="text-apple-caption text-apple-gray-600">Satisfaction</div>
               </div>
             </div>
           </div>

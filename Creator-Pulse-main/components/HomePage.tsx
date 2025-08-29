@@ -39,23 +39,23 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold">
-                안녕하세요, 크리에이터님! 👋
+                안녕하세요, Creator
               </h1>
               <p className="text-muted-foreground text-lg">
-                오늘도 성공적인 쇼핑 콘텐츠를 위한 실시간
-                인사이트를 확인해보세요
+                데이터 기반 인사이트로 최적의 콘텐츠 전략을
+                수립하고 성과를 극대화하세요
               </p>
             </div>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2 px-3 py-2 bg-green-50 rounded-lg">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-sm text-green-700">
-                  실시간 업데이트
+                  Live Update
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Calendar className="h-4 w-4" />
-                <span>마지막 업데이트: 방금 전</span>
+                <span>Updated: Now</span>
               </div>
             </div>
           </div>
@@ -115,38 +115,39 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
                     </div>
                     <div>
                       <h2 className="text-2xl font-bold bg-gradient-to-r from-[#ff8a3d] to-[#ff4d6d] bg-clip-text text-transparent">
-                        💡 오늘의 기회
+                        Today's Opportunity
                       </h2>
                       <p className="text-muted-foreground">
-                        지금 촬영하면 가장 수익성 높은 콘텐츠
+                        Prime content opportunity with highest ROI potential
                       </p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold text-gray-900">
-                      무선 이어폰 완벽 리뷰 & 언박싱
+                      Wireless Earbuds: Complete Review & Unboxing
                     </h3>
                     <div className="flex items-center gap-6 text-sm">
                       <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-green-700 font-medium">94.5% 신뢰도</span>
+                        <span className="text-green-700 font-medium">94.5% Confidence</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4 text-[#ff8a3d]" />
-                        <span className="font-semibold text-[#ff8a3d]">예상 월수익: 85만원</span>
+                        <span className="font-semibold text-[#ff8a3d]">Est. Monthly Revenue: ₩850,000</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <TrendingUp className="h-4 w-4 text-green-500" />
-                        <span className="text-green-600 font-medium">+32% 성장률</span>
+                        <span className="text-green-600 font-medium">+32% Growth Rate</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <Button 
-                  className="bg-gradient-to-r from-[#ff8a3d] to-[#ff4d6d] hover:from-[#ff8a3d]/90 hover:to-[#ff4d6d]/90 text-white font-semibold px-8 py-6 rounded-2xl shadow-lg shadow-[#ff8a3d]/30 hover:shadow-xl hover:shadow-[#ff8a3d]/40 transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-brand-primary to-brand-secondary hover:shadow-apple-xl text-white font-semibold px-10 py-4 rounded-2xl shadow-apple-lg hover:shadow-apple-xl transition-all duration-300 hover:scale-[1.02] border-0"
                   size="lg"
+                  onClick={() => onPageChange('trends')}
                 >
-                  📹 지금 촬영하기
+                  <span className="text-apple-callout font-semibold">Start Creating</span>
                 </Button>
               </div>
             </div>
@@ -157,7 +158,7 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-[#ff8a3d]" />
               <h2 className="text-xl font-semibold">
-                빠른 액션
+                Quick Actions
               </h2>
             </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -195,91 +196,77 @@ export function HomePage({ isLoggedIn, onLoginClick, onPageChange }: HomePagePro
         </section>
       )}
 
-      {/* 3. 핵심 3개 영역 */}
-      <section className="space-y-8">
-        <div className="flex items-center gap-2">
-          <Activity className="h-5 w-5 text-[#ff4d6d]" />
-          <h2 className="text-2xl font-bold">
-            핵심 인사이트
-          </h2>
-          <Badge className="bg-brand-gradient text-white border-0">
-            LIVE
-          </Badge>
-        </div>
-
-        {/* 영역 1: 지금 뜨는 것 */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-[#ff4d6d]/10 to-[#ff8a3d]/10">
-              <TrendingUp className="h-5 w-5 text-[#ff4d6d]" />
+      {/* 3-Tier Premium Funnel */}
+      <section className="space-y-16">
+        {/* Tier 1: DISCOVER */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 rounded-full mb-4">
+              <div className="w-2 h-2 bg-brand-primary rounded-full"></div>
+              <span className="text-apple-footnote font-semibold text-brand-primary uppercase tracking-wider">Discover</span>
             </div>
-            <h3 className="text-xl font-bold text-gray-900">🔥 지금 뜨는 것</h3>
-            <span className="text-sm text-muted-foreground">실시간 트렌드 & 인기 상품</span>
+            <h2 className="text-apple-title-1 font-semibold text-apple-gray-900">
+              Market Opportunities
+            </h2>
+            <p className="text-apple-body text-apple-gray-600 max-w-2xl mx-auto">
+              실시간 데이터로 가장 유망한 콘텐츠 기회를 발견하세요
+            </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
               <TrendingSection onPageChange={onPageChange} />
             </div>
-            <div className="lg:col-span-4">
+            <div className="space-y-6">
               <PopularProducts onPageChange={onPageChange} />
+              <PopularCategories />
             </div>
           </div>
         </div>
 
-        {/* 영역 2: 내게 맞는 것 */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-[#ff8a3d]/10 to-[#ff4d6d]/10">
-              <Users className="h-5 w-5 text-[#ff8a3d]" />
+        {/* Tier 2: ANALYZE */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-secondary/10 to-brand-primary/10 rounded-full mb-4">
+              <div className="w-2 h-2 bg-brand-secondary rounded-full"></div>
+              <span className="text-apple-footnote font-semibold text-brand-secondary uppercase tracking-wider">Analyze</span>
             </div>
-            <h3 className="text-xl font-bold text-gray-900">🎯 내게 맞는 것</h3>
-            <span className="text-sm text-muted-foreground">개인화 추천 & 카테고리</span>
+            <h2 className="text-apple-title-1 font-semibold text-apple-gray-900">
+              Data-Driven Insights
+            </h2>
+            <p className="text-apple-body text-apple-gray-600 max-w-2xl mx-auto">
+              심도 있는 시장 분석과 수익성 예측으로 전략을 수립하세요
+            </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-3">
               <MarketInsights onPageChange={onPageChange} />
             </div>
-            <div className="lg:col-span-4 space-y-6">
-              <PopularCategories />
+            <div>
               <AdBanner />
             </div>
           </div>
         </div>
 
-        {/* 영역 3: 성과 분석 */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-green-500/10 to-blue-500/10">
-              <Activity className="h-5 w-5 text-green-600" />
+        {/* Tier 3: ACT */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-apple-gray-900/10 to-apple-gray-700/10 rounded-full mb-4">
+              <div className="w-2 h-2 bg-apple-gray-900 rounded-full"></div>
+              <span className="text-apple-footnote font-semibold text-apple-gray-900 uppercase tracking-wider">Act</span>
             </div>
-            <h3 className="text-xl font-bold text-gray-900">📊 성과 분석</h3>
-            <span className="text-sm text-muted-foreground">가이드 & 팁</span>
+            <h2 className="text-apple-title-1 font-semibold text-apple-gray-900">
+              Execute Strategy
+            </h2>
+            <p className="text-apple-body text-apple-gray-600 max-w-2xl mx-auto">
+              최적화된 가이드와 도구로 성공적인 콘텐츠를 제작하세요
+            </p>
           </div>
-          <div className="lg:col-span-12">
+          <div className="max-w-4xl mx-auto">
             <QuickStartGuide onPageChange={onPageChange} />
           </div>
         </div>
       </section>
 
-      {/* 개발용 로그인 토글 */}
-      <div className="fixed bottom-6 right-6 z-50 space-y-2">
-        <Button
-          onClick={onLoginClick}
-          className="bg-brand-gradient hover:opacity-90 shadow-lg w-full"
-          size="sm"
-        >
-          로그인 페이지
-        </Button>
-        <Button
-          onClick={() => {
-            // 로그인 상태 토글은 App.tsx에서 처리
-          }}
-          className="bg-gray-600 hover:bg-gray-700 shadow-lg w-full text-white"
-          size="sm"
-        >
-          상태 토글
-        </Button>
-      </div>
     </div>
   );
 }

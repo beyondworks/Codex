@@ -173,7 +173,7 @@ export function TrendingSection({ onPageChange }: TrendingSectionProps) {
                       console.log('영상 만들기:', item.title);
                     }}
                   >
-                    📹 영상 만들기
+                    Create Video
                   </Button>
                 </div>
               </div>

@@ -44,3 +44,55 @@
 	•	코드 리뷰 승인 및 린트/타입체크 통과
 	•	관측(로그/메트릭) 추가, 문서/체인지로그 갱신
 	•	롤백 계획 및 기능 플래그 확인
+
+## 프로젝트 개요
+- 외부 URL을 지정한 디바이스 해상도로 캡쳐하고, Nano Banana 이미지 합성 API를 통해 텍스트/이미지 기반 홈페이지 목업을 생성하는 풀스택 서비스입니다.
+- 프론트엔드는 React + Vite 기반의 단일 페이지 애플리케이션이며, 백엔드는 Express + TypeScript로 구성되었습니다.
+- UI는 심플한 카드형 패널 구조와 명확한 어포던스를 제공하며, 디바이스·테마·조명·인테리어·종횡비·변형 수량을 직관적으로 제어할 수 있습니다.
+
+## 모놀리포 구성
+```
+Codex/
+├─ backend/        # Express + Puppeteer API 서버
+├─ frontend/       # Vite 기반 React UI
+├─ shared storage  # 캡쳐/목업 이미지가 저장되는 storage 디렉터리(런타임 생성)
+└─ package.json    # 루트 워크스페이스 스크립트
+```
+
+## 환경 변수
+### backend/.env
+- `PORT`: API 서버 포트 (기본값 4000)
+- `ALLOWED_ORIGINS`: CORS 허용 오리진 목록(쉼표 구분)
+- `NANO_BANANA_API_KEY`: Nano Banana API 인증 토큰
+- `NANO_BANANA_API_URL`: Nano Banana API 엔드포인트 기본 URL (예: `https://api.nanobanana.ai/v1/mockup`)
+- `STORAGE_DIR`: 이미지 저장 위치(미지정 시 `<repo>/storage`)
+
+### frontend/.env
+- `VITE_API_BASE_URL`: 백엔드 API 베이스 URL (기본값 `http://localhost:4000/api`)
+
+`.env.example` 파일을 참고해 각 디렉터리에 `.env`를 생성 후 값을 채워주세요.
+
+## 실행 방법
+```bash
+npm install              # 루트에서 워크스페이스 의존성 설치
+npm run dev              # backend(4000) + frontend(5173) 동시 기동
+```
+- 백엔드 단독 실행: `npm run dev --workspace backend`
+- 프론트엔드 단독 실행: `npm run dev --workspace frontend`
+
+## 테스트
+```bash
+npm run test             # backend vitest + frontend vitest 순차 실행
+```
+
+## 주요 기능
+- **링크 캡쳐**: Puppeteer로 지정 URL을 SSRF 차단 규칙에 따라 검증 후 선택 디바이스 해상도로 캡쳐합니다.
+- **테마 편집**: 앵글/분위기/조명/인테리어 옵션과 종횡비, 변형 개수를 조합해 다양한 분위기의 목업을 생성합니다.
+- **텍스트→이미지**: Nano Banana Text-to-Image 엔드포인트를 호출해 테마 기반 목업을 생성합니다.
+- **이미지→이미지**: 캡쳐 이미지를 바탕으로 스타일 변환 목업을 생성합니다.
+- **결과 관리**: 생성된 이미지는 `/media` 정적 라우트를 통해 다운로드할 수 있으며, 프론트엔드에서 바로 미리보기와 저장이 가능합니다.
+
+## Nano Banana API 연동 참고
+- 백엔드 `NanoBananaClient`는 `/text-to-image`, `/image-to-image` 엔드포인트를 대상으로 합니다.
+- API 키가 없을 경우 502 에러를 반환하므로 실제 연동 전에 환경 변수를 반드시 설정하세요.
+- 전달되는 payload에는 테마 메타데이터가 포함되어 있어, 추후 대시보드/모니터링 연동 시 쉽게 추적할 수 있습니다.

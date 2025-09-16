@@ -1,40 +1,46 @@
-YouTube Shopping Search (Static Web App)
+목적
 
-This simple static page searches YouTube for videos and filters the results to those that appear to be shopping-related. Because YouTube’s public API does not expose an official "has shopping tag" filter, this app approximates shopping content by checking video tags and (optionally) title/description against a configurable keyword list.
+이 규칙은 오류를 최소화 하고 완성도 높은 코드를 작성하여 제품 품질을 높이기 위한 규칙입니다.
 
-Files
-- index.html — UI, inputs, and containers
-- app.js — YouTube API calls, filtering, rendering, pagination
-  - Supports a "Shorts only" mode: uses search `videoDuration=short` and additionally filters videos to <=70s or with #shorts/쇼츠 hints.
-- styles.css — Responsive card layout and theme
- - README.md — Setup and notes
+핵심 규칙 (필수)
+	1.	Task를 계획적으로 나누고, 워크플로우를 설계하여 단계별로 진행할 것.
+	2.	반드시 테스트 코드로 작성 후 단계별로 테스트 검증 후 다음 단계로 넘어갈 것.
+	3.	오류 발생 시 깊게 생각하여 근본적인 문제의 원인부터 파악할 것.
+	4.	원인이 파악 후 개선 사항 적용할 것.
+	5.	기능 추가 등의 상황 시 코드 충돌을 방지하기 위해 불가피한 경우가 아니라면 하드 코딩은 지양할 것.
 
-Server (optional, for Python + Node)
-- server/src/server.js — Express service layer
-- server/src/youtube.js — YouTube API wrapper (Node 18+ global fetch)
-- server/src/analyze.js — Bridges to Python analyzer, with JS fallback
-- server/analyzer/analyze.py — Python analysis/scoring pipeline
+작업 방식
+	•	작업 단위: 0.5~2일 크기로 쪼개기(분할 못하면 스펙 불명확 신호)
+	•	브랜치 전략: trunk-based(권장) 또는 간소화 Gitflow; PR은 작게/자주
+	•	커밋 규칙: Conventional Commits(feat:, fix:, chore:…)
+	•	기능 플래그: 신규 기능은 기본 off, 단계적 롤아웃
 
-Run the server
-1) cd server
-2) npm i (Node 18+)
-3) export YOUTUBE_API_KEY=YOUR_KEY
-4) npm start (listens on http://localhost:5050)
+테스트 원칙
+	•	TDD 지향: 실패하는 테스트 → 최소 구현 → 리팩터
+	•	계층: Unit(빠르게) > Integration(API/DB) > E2E(핵심 시나리오)
+	•	임계치: 핵심 모듈 라인 커버리지 ≥ 80%(참고치), 스냅샷 테스트 오남용 금지
+	•	비동기/네트워크: 타임아웃/재시도/에러경로 테스트 필수
 
-Frontend with server
-- Leave the API Key field empty. The frontend will call POST http://localhost:5050/api/search with your query and options.
-- If you fill the API Key, the frontend performs direct browser calls instead (no server).
+코드 품질
+	•	하드코딩 자제: 상수/엔드포인트/키는 .env/설정 모듈/피처플래그로
+	•	에러 처리: 사용자 메시지/로그 메시지 분리, 예외 매핑 일관성
+	•	리팩터링: 중복 제거, 순환 의존 금지, 모듈 경계 명확화
+	•	리뷰 규칙: PR 템플릿(동기/변경점/리스크/테스트 증거) 채우기, 1+ 승인
 
-Setup
-1) Obtain a YouTube Data API v3 key from Google Cloud Console.
-2) Open index.html in a browser.
-3) Paste your API key, enter a query, and click "Search Shopping Videos".
+보안/신뢰성
+	•	입력 검증: URL 정규화, 프로토콜 화이트리스트, 내부 IP 차단(SSRF)
+	•	비밀 관리: 키/토큰은 비밀 저장소, 로그에 출력 금지
+	•	레이트리밋/백오프: 외부 캡쳐/AI 호출 보호
+	•	관측성: 구조화 로그, 트레이싱(request-id), 주요 메트릭 계측
 
-Notes
-- The keyword list is editable via the disclosure panel in the UI.
-- Enable "Safe search" to reduce adult/sensitive results.
-- Click "Load more" to paginate through results.
+성능/비용
+	•	SLO 준수: 캡쳐/AI 처리 지연 모니터링, SLA 초과 시 경보
+	•	캐시/큐: 동일 URL 재요청 캐시, 백그라운드 워커로 후처리
+	•	비용 가시화: AI 호출당 단가/월간 예산 대시보드
 
-Security
-- Using an API key directly in the browser exposes the key to users. Restrict your key to YouTube Data API v3 and set HTTP referrer restrictions. For stricter security, proxy requests through a lightweight server that injects the key server-side.
-# Codex
+정의된 완료(DoD)
+	•	요구사항 반영 및 수용 기준 충족
+	•	테스트(유닛/통합/E2E) 녹색, 커버리지 리포트 첨부
+	•	코드 리뷰 승인 및 린트/타입체크 통과
+	•	관측(로그/메트릭) 추가, 문서/체인지로그 갱신
+	•	롤백 계획 및 기능 플래그 확인
